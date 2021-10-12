@@ -1,6 +1,6 @@
 const Comments = require("../models/Comments");
 const Books = require("../models/Book");
-const { BadRequestError } = require("../errors");
+const { BadRequestError, NotFoundError } = require("../errors");
 const { StatusCodes } = require("http-status-codes");
 
 const createBook = async (req, res) => {
@@ -24,7 +24,18 @@ const getAllBooks = async (req, res) => {
   res.status(StatusCodes.OK).json(books);
 };
 const getSingleBook = async (req, res) => {
-  res.send("gygg");
+  const { _id } = req.params;
+  const book = await Books.findOne({ _id });
+  if (!book) {
+    throw new NotFoundError(`no books with id ${_id}`);
+  }
+  let comments = (await Comments.find({ createdBy: _id })) || [];
+  const returnedBook = {
+    title: book.title,
+    _id: book._id,
+    comments,
+  };
+  res.status(StatusCodes.OK).json(returnedBook);
 };
 const createComment = async (req, res) => {
   res.send("jhur");

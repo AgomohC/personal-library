@@ -7,13 +7,11 @@ const {
   deleteBook,
   deleteAllBooks,
 } = require("../controllers/book-handler");
+router.route("/books").post(createBook).get(getAllBooks).delete(deleteAllBooks);
 router
-  .route("/books")
-  .post(createBook)
-  .get(getAllBooks)
+  .route("/books/:_id")
   .get(getSingleBook)
   .post(createComment)
-  .delete(deleteBook)
-  .delete(deleteAllBooks);
+  .delete(deleteBook);
 
 module.exports = router;
