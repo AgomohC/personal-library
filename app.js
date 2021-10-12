@@ -11,9 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(helmet());
-app.use("/", (req, res) => {
-  res.send(" <h1>Personal Library</h1>");
-});
+
 app.use("/api", libraryRoutes);
 app.use(notFound);
 app.use(errorHandler);

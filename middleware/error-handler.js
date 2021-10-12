@@ -9,6 +9,10 @@ const errorHandlerMiddleware = (err, req, res, next) => {
     customError.msg = `_id ${err.value._id} is invalid`;
     customError.statusCode = StatusCodes.BAD_REQUEST;
   }
+  if (err.code === 11000) {
+    customError.statusCode = 400;
+    customError.msg = `${err.keyValue.title} already exists`;
+  }
   return res.status(customError.statusCode).json({ error: customError.msg });
 };
 

@@ -1,6 +1,7 @@
 const Comments = require("../models/Comments");
 const Books = require("../models/Book");
 const { BadRequestError } = require("../errors");
+const { StatusCodes } = require("http-status-codes");
 
 const createBook = async (req, res) => {
   const { title } = req.body;
@@ -8,7 +9,8 @@ const createBook = async (req, res) => {
     throw new BadRequestError(`missing require field title`);
   }
   const newBook = await Books.create({ title });
-  res.send("gg");
+
+  res.status(StatusCodes.CREATED).json(newBook);
 };
 const getAllBooks = async (req, res) => {
   res.send("gcgc");
