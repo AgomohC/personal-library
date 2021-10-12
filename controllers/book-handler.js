@@ -1,7 +1,13 @@
 const Comments = require("../models/Comments");
 const Books = require("../models/Book");
+const { BadRequestError } = require("../errors");
 
 const createBook = async (req, res) => {
+  const { title } = req.body;
+  if (!title) {
+    throw new BadRequestError(`missing require field title`);
+  }
+  const newBook = await Books.create({ title });
   res.send("gg");
 };
 const getAllBooks = async (req, res) => {
