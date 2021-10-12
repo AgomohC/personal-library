@@ -9,11 +9,19 @@ const createBook = async (req, res) => {
     throw new BadRequestError(`missing require field title`);
   }
   const newBook = await Books.create({ title });
-
-  res.status(StatusCodes.CREATED).json(newBook);
+  const returnedBook = {
+    _id: newBook._id,
+    title: newBook.title,
+  };
+  res.status(StatusCodes.CREATED).json(returnedBook);
 };
 const getAllBooks = async (req, res) => {
-  res.send("gcgc");
+  const books = await Books.find({}).select({
+    title: 1,
+    commentCount: 1,
+    _id: 1,
+  });
+  res.status(StatusCodes.OK).json(books);
 };
 const getSingleBook = async (req, res) => {
   res.send("gygg");

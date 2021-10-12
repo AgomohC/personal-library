@@ -4,6 +4,10 @@ const BookSchema = mongoose.Schema({
     type: String,
     unique: true,
   },
+  commentCount: {
+    type: Number,
+    default: 0,
+  },
 });
 const Books = mongoose.model("Books", BookSchema);
 module.exports = Books;
