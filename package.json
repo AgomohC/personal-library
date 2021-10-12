@@ -1,0 +1,39 @@
+{
+  "name": "personal-library",
+  "version": "1.0.0",
+  "description": "A microservice which tracks books in a library built with fcc's specifications",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AgomohC/personal-library.git"
+  },
+  "keywords": [
+    "mongoose",
+    "express",
+    "cors",
+    "dotenv",
+    "helmet"
+  ],
+  "author": "Chinaemerem Agomoh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AgomohC/personal-library/issues"
+  },
+  "homepage": "https://github.com/AgomohC/personal-library#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "helmet": "^4.6.0",
+    "http-status-codes": "^2.1.4",
+    "mongoose": "^6.0.10"
+  }
+}
