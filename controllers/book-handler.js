@@ -33,8 +33,8 @@ const getSingleBook = async (req, res) => {
   const returnedBook = {
     title: book.title,
     _id: book._id,
-    comments,
     commentCount: comments.length,
+    comments,
   };
   res.status(StatusCodes.OK).json(returnedBook);
 };
@@ -79,7 +79,9 @@ const deleteBook = async (req, res) => {
     .json({ result: `successfully deleted, _id: ${_id}` });
 };
 const deleteAllBooks = async (req, res) => {
-  res.send(gg);
+  const deletedBooks = await Books.deleteMany({});
+  const deletedComments = await Comments.deleteMany({});
+  res.status(StatusCodes.OK).json({ msg: "deleted successfully" });
 };
 
 module.exports = {
