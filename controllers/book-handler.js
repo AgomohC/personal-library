@@ -34,11 +34,36 @@ const getSingleBook = async (req, res) => {
     title: book.title,
     _id: book._id,
     comments,
+    commentCount: comments.length,
   };
   res.status(StatusCodes.OK).json(returnedBook);
 };
 const createComment = async (req, res) => {
-  res.send("jhur");
+  const {
+    params: { _id },
+    body: { comment },
+  } = req;
+  if (!comment) {
+    throw new BadRequestError(`missing required field comment`);
+  }
+  const comments = await Comments.create({ comment, createdBy: _id });
+  const bookComments = await Comments.find({ createdBy: _id });
+  const updatedBook = await Books.findByIdAndUpdate(
+    { _id },
+    { commentCount: bookComments.length },
+    { new: true }
+  );
+  if (!updatedBook) {
+    throw new NotFoundError(`no book found`);
+  }
+  const returnedBook = {
+    title: updatedBook.title,
+    _id,
+    bookComments,
+    commentCount: bookComments.length,
+  };
+
+  res.status(StatusCodes.CREATED).json(returnedBook);
 };
 const deleteBook = async (req, res) => {
   res.send("yrkkm");
