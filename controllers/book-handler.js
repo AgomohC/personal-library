@@ -29,7 +29,7 @@ const getSingleBook = async (req, res) => {
   if (!book) {
     throw new NotFoundError(`no books with id ${_id}`);
   }
-  let comments = (await Comments.find({ createdBy: _id })) || [];
+  let comments = await Comments.find({ createdBy: _id });
   const returnedBook = {
     title: book.title,
     _id: book._id,
