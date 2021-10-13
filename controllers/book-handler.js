@@ -46,6 +46,10 @@ const createComment = async (req, res) => {
   if (!comment) {
     throw new BadRequestError(`missing required field comment`);
   }
+  const book = await Books.findById({ _id });
+  if (!book) {
+    throw new NotFoundError(`no book found`);
+  }
   const comments = await Comments.create({ comment, createdBy: _id });
   const bookComments = await Comments.find({ createdBy: _id });
   const updatedBook = await Books.findByIdAndUpdate(
@@ -53,9 +57,6 @@ const createComment = async (req, res) => {
     { commentCount: bookComments.length },
     { new: true }
   );
-  if (!updatedBook) {
-    throw new NotFoundError(`no book found`);
-  }
   const returnedBook = {
     title: updatedBook.title,
     _id,
@@ -66,7 +67,16 @@ const createComment = async (req, res) => {
   res.status(StatusCodes.CREATED).json(returnedBook);
 };
 const deleteBook = async (req, res) => {
-  res.send("yrkkm");
+  const { _id } = req.params;
+
+  const book = await Books.findByIdAndDelete({ _id });
+  const comments = await Comments.deleteMany({ createdBy: _id });
+  if (!book) {
+    throw new NotFoundError(`No book with _id: ${_id} exists`);
+  }
+  res
+    .status(StatusCodes.OK)
+    .json({ result: `successfully deleted, _id: ${_id}` });
 };
 const deleteAllBooks = async (req, res) => {
   res.send(gg);
