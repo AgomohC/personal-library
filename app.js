@@ -30,7 +30,7 @@ const connect = require("./db/connect");
 // routes
 app.get("/", (req, res) => {
   res.send(
-    '<header><h1>Personal Library</h1></header><h4><a href="https://github.com/AgomohC/stock-price-checker#readme" target="_blank"> See Documentation <a> </h4>'
+    '<header><h1>Personal Library</h1></header><h4><a href="https://github.com/AgomohC/personal-library#readme" target="_blank"> See Documentation <a> </h4>'
   );
 });
 app.use("/api", libraryRoutes);
