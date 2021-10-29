@@ -26,16 +26,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(helmet());
-app.use(notFound);
-app.use(errorHandler);
 const connect = require("./db/connect");
 // routes
 app.get("/", (req, res) => {
   res.send(
-    '<header><h1>Personal Library</h1></header><h4><a href="https://github.com/AgomohC/stock-price-checker#readme" target="_blank"> See Documentation <a> </h4>'
+    '<header><h1>Personal Library</h1></header><h4><a href=""https://github.com/AgomohC/stock-price-checker#readme" target="_blank"> See Documentation <a> </h4>'
   );
 });
 app.use("/api", libraryRoutes);
+
+//error handler and not found handler
+app.use(notFound);
+app.use(errorHandler);
 //port
 const port = process.env.PORT || 8080;
 
