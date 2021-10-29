@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/AgomohC/personal-library/issues"
   },
-  "homepage": "https://github.com/AgomohC/personal-library#readme",
+  "homepage": "https://femto-private-library.herokuapp.com/",
   "devDependencies": {
     "nodemon": "^2.0.13"
   },
