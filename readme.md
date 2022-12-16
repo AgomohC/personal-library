@@ -1,6 +1,6 @@
 # Personal Library
 
-[femto-personal-library](https://femto-private-library.herokuapp.com/) is a REST API that partially implements CRUD. It keeps track of the books in a personal library and the number of comment each book has. The project idea was gotten from [freeCodeCamp](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/metric-imperial-converter).
+[femto-personal-library](https://secretive-flash-passbook.glitch.me/) is a REST API that partially implements CRUD. It keeps track of the books in a personal library and the number of comment each book has. The project idea was gotten from [freeCodeCamp](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/metric-imperial-converter).
 
 ---
 
@@ -8,25 +8,25 @@
 
 There are 6 main resources
 
-- Create a book <https://femto-private-library.herokuapp.com/api/books>
-- Get all books <https://femto-private-library.herokuapp.com/api/books>
-- Delete all books <https://femto-private-library.herokuapp.com/api/books>
-- Get a single book <https://femto-private-library.herokuapp.com/api/books/:_id>
-- Create a comment for a book <https://femto-private-library.herokuapp.com/api/books/:_id>
-- Delete a Single book and all its associated comments <https://femto-private-library.herokuapp.com/api/books/:_id>
+- Create a book <https://secretive-flash-passbook.glitch.me/api/books>
+- Get all books <https://secretive-flash-passbook.glitch.me/api/books>
+- Delete all books <https://secretive-flash-passbook.glitch.me/api/books>
+- Get a single book <https://secretive-flash-passbook.glitch.me/api/books/:_id>
+- Create a comment for a book <https://secretive-flash-passbook.glitch.me/api/books/:_id>
+- Delete a Single book and all its associated comments <https://secretive-flash-passbook.glitch.me/api/books/:_id>
 
 ---
 
 ### How to
 
-you can fetch data with any kind of methods you know(fetch API, Axios, jquery ajax,...)
+you can fetch data with any kind of methods you know(fetch API, Axios, curl)
 
 ---
 
 ### Create a book
 
 ```js
-fetch("https://femto-private-library.herokuapp.com/api/books", {
+fetch("https://secretive-flash-passbook.glitch.me/api/books", {
   method: "POST",
   body: JSON.stringify({
     title: "new book",
@@ -57,7 +57,7 @@ If the book already exists in the database, a 400 error is returned with the fol
 ### Get all books
 
 ```js
-fetch("https://femto-private-library.herokuapp.com/api/books")
+fetch("https://secretive-flash-passbook.glitch.me/api/books")
   .then((res) => res.json())
   .then((json) => console.log(json));
 /*
@@ -87,7 +87,7 @@ fetch("https://femto-private-library.herokuapp.com/api/books")
 ### Delete all books
 
 ```js
-fetch("https://femto-private-library.herokuapp.com/api/books", {
+fetch("https://secretive-flash-passbook.glitch.me/api/books", {
   method: "DELETE",
 })
   .then((res) => res.json())
@@ -105,7 +105,7 @@ fetch("https://femto-private-library.herokuapp.com/api/books", {
 ### Get a single book
 
 ```js
-fetch("https://femto-private-library.herokuapp.com/api/books/:_id")
+fetch("https://secretive-flash-passbook.glitch.me/api/books/:_id")
   .then((res) => res.json())
   .then((json) => console.log(json));
 /*
@@ -129,7 +129,7 @@ If no book with the _id passed into the query exists, a 404 error is returned wi
 ### Add a comment to a book
 
 ```js
-fetch("https://femto-private-library.herokuapp.com/api/books/:_id", {
+fetch("https://secretive-flash-passbook.glitch.me/api/books/:_id", {
   method: "POST",
   body: JSON.stringify({
     comment: "new comment",
@@ -163,7 +163,7 @@ If no book with the _id passed into the query exists, a 404 error is returned wi
 ### Delete a single book
 
 ```js
-fetch("https://femto-private-library.herokuapp.com/api/books/:_id", {
+fetch("https://secretive-flash-passbook.glitch.me/api/books/:_id", {
   method: "DELETE",
 })
   .then((res) => res.json())
